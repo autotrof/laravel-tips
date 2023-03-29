@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mobil;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class MobilController extends Controller
 {
@@ -12,7 +13,7 @@ class MobilController extends Controller
      */
     public function index()
     {
-        return view('mobil');
+        return Inertia::render('MobilIndex');
     }
 
     /**
@@ -20,7 +21,7 @@ class MobilController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('MobilForm');
     }
 
     /**
@@ -36,7 +37,7 @@ class MobilController extends Controller
      */
     public function show(Mobil $mobil)
     {
-        //
+        return $mobil;
     }
 
     /**

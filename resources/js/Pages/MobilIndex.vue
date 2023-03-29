@@ -1,18 +1,26 @@
 <template>
-    <div>INI MOBIL INDEX</div>
-    <button @click="buttonClicked">Klik Saya !!</button>
-    <div>{{ roda_text }}</div>
-    <Link href="/mobil/create">KE MOBIL FORM</Link>
+    <select v-model="mobil_selected">
+        <option v-for="mobil in props.mobils" :value="mobil.id">{{ mobil.merk }}</option>
+    </select>
+    <div>
+        {{ mobil_detail?.roda }}
+    </div>
 </template>
 
 <script setup>
     import { Link } from '@inertiajs/vue3'
-    import { ref, computed } from 'vue'
-    const roda = ref(3)
-    const buttonClicked = () => {
-        roda.value++
-    }
-    const roda_text = computed(() => {
-        return "ADA " + roda.value + "RODA"
+    import { ref, watch } from 'vue'
+
+    const props = defineProps(['mobils'])
+
+    const mobil_selected = ref(null)
+    const mobil_detail = ref(null)
+
+    watch(mobil_selected, (new_value) => {
+        axios(`/mobil/${new_value}`)
+        .then(response => {
+            mobil_detail.value = response.data
+            console.log(response.data)
+        })
     })
 </script>

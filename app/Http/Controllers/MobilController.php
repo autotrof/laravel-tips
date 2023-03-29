@@ -13,7 +13,8 @@ class MobilController extends Controller
      */
     public function index()
     {
-        return Inertia::render('MobilIndex');
+        $mobils = Mobil::select(['id', 'merk'])->get();
+        return Inertia::render('MobilIndex', compact('mobils'));
     }
 
     /**

@@ -6,7 +6,9 @@
 
 import axios from 'axios';
 window.axios = axios;
-
+import '@tabler/core/src/js/src/autosize'
+import '@tabler/core/src/js/src/input-mask'
+import '@tabler/core/src/js/tabler.esm'
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**

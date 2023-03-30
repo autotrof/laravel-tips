@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\MobilController;
-use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\GeneralController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    Log::error("Ada yang akses");
-    return view('welcome');
-});
-
-Route::resource('mobil', MobilController::class);
+Route::get('/', [GeneralController::class, 'index']);
+Route::get('/tes', [GeneralController::class, 'tes']);

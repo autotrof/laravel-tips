@@ -14,8 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/tes', [GeneralController::class, 'index']);
+Route::get('/', [GeneralController::class, 'index']);

@@ -21,3 +21,4 @@ Route::get('/', function () {
 });
 
 Route::resource('mobil', MobilController::class);
+Route::get('/contoh/{id}', [MobilController::class, 'contohRelasiOneToMany']);

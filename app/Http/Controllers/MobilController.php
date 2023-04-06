@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Karyawan;
 use App\Models\Mobil;
 use Illuminate\Http\Request;
 
@@ -61,5 +62,20 @@ class MobilController extends Controller
     public function destroy(Mobil $mobil)
     {
         //
+    }
+
+    public function contohRelasiOneToMany($id)
+    {
+        // $karyawans = Karyawan::limit(2)->with('presensis')->get();
+        // $karyawan = Karyawan::with('presensis')->findOrFail($id);
+        // $karyawan->load('presensis');
+        // return $karyawans;
+        $karyawan = Karyawan::findOrFail($id);
+        $karyawan->presensis()->create([
+            // 'karyawan_id' => $karyawan->id,   ===> ga perlu
+            'tanggal' => date('Y-m-d'),
+            'masuk' => date('Y-m-d H:i:s'),
+            'status' => 1
+        ]);
     }
 }
